@@ -5,7 +5,10 @@ const char MAIN_page[] PROGMEM = R"webpage(
 <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<script src="https://code.highcharts.com/8.0/highcharts.js"></script>
+<script src="code/highcharts.js"></script>
+<script src="code/modules/exporting.js"></script>
+<script src="code/modules/export-data.js"></script>
+<script src="code/modules/accessibility.js"></script>
 
 <style>
 @import 'https://fonts.googleapis.com/css?family=Ubuntu:300, 400, 500, 700';

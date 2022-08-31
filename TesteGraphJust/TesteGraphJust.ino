@@ -116,6 +116,7 @@ void loraComunication(){
 void webServerConnect(){
   Serial.print("Se conectando a: ");
   Serial.println(ssid);
+  WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password); //Se conecta ao Wi-Fi
   while (WiFi.status() != WL_CONNECTED) { //Verifica se a conexão foi bem-sucedida
     delay(1000);
@@ -124,16 +125,22 @@ void webServerConnect(){
   Serial.println("\nConectado");
   Serial.print("IP: ");
   Serial.println(WiFi.localIP()); //Imprime o endereço de IP
+
+  display.drawString(0, 0, "IP Conectado:");
+  display.drawString(0, 10, String(WiFi.localIP()));
+  display.display();
+  delay(3000);
+  
   sv.on("/", handleRoot);
   sv.on("/acx", handle_acx);
   sv.on("/leituras", handle_leituras);
   sv.on("/botoes", handle_disturbios);
-  sv.on("/id", handle_id);
   sv.onNotFound(nao_encontrado);
   sv.begin(); //Inicia o servidor
   Serial.println("Servidor Online");
   
   }
+
 
 //Construção página web
 void handleRoot() {
